@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Mastery - Interactive Code Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Floating Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+            border-radius: 30px;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stats-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stat-bubble {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-bubble:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .stat-bubble::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, #764ba2, #f093fb, transparent);
+            animation: borderSlide 3s infinite;
+        }
+
+        @keyframes borderSlide {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-right: 20px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .code-showcase {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 20px;
+            padding: 0;
+            margin: 30px 0;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .code-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .code-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .code-tab {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .code-tab:nth-child(1) { background: #ff5f57; }
+        .code-tab:nth-child(2) { background: #ffbd2e; }
+        .code-tab:nth-child(3) { background: #28ca42; }
+
+        .code-title {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .copy-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .code-content {
+            padding: 25px;
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .keyword { color: #81c784; font-weight: 600; }
+        .string { color: #ffb74d; }
+        .comment { color: #90a4ae; font-style: italic; }
+        .function { color: #64b5f6; }
+        .variable { color: #f06292; }
+        .number { color: #b39ddb; }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 25px;
+            padding: 35px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: toolFloat 8s linear infinite;
+        }
+
+        @keyframes toolFloat {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .tool-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .tool-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tool-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .interactive-dashboard {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .dashboard-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .control-btn.active {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            transform: scale(1.05);
+        }
+
+        .control-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+
+        .control-btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .metrics-display {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .metric-label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+
+        .metric-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #667eea;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 8px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            border-radius: 6px;
+            transition: width 1.5s ease;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: progressShine 2s infinite;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .roi-calculator {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .calculator-inputs {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-results {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .result-label {
+            font-weight: 600;
+        }
+
+        .result-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4ade80;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: floatIcon 20s infinite linear;
+        }
+
+        @keyframes floatIcon {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .roi-calculator { grid-template-columns: 1fr; }
+            .dashboard-controls { flex-direction: column; align-items: center; }
+            .section-header { flex-direction: column; text-align: center; }
+            .section-icon { margin-right: 0; margin-bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Floating Marketing Icons -->
+    <div class="floating-elements" id="floating-elements"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">Digital Marketing Mastery 🚀</h1>
+            <p class="hero-subtitle">Code, Analytics, Automation & Growth Strategies</p>
+            
+            <div class="stats-showcase">
+                <div class="stat-bubble" onclick="animateStats(this)">
+                    <div class="stat-number">300%</div>
+                    <div class="stat-label">ROI Boost</div>
+                </div>
+                <div class="stat-bubble" onclick="animateStats(this)">
+                    <div class="stat-number">2.5M</div>
+                    <div class="stat-label">Leads Generated</div>
+                </div>
+                <div class="stat-bubble" onclick="animateStats(this)">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Conversion Rate</div>
+                </div>
+                <div class="stat-bubble" onclick="animateStats(this)">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Automation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Analytics Section -->
+        <div class="content-card">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <h2 class="section-title">Advanced Google Analytics 4 Setup</h2>
+            </div>
+            
+            <p style="margin-bottom: 30px; font-size: 1.1rem; color: #666;">
+                Complete GA4 implementation with enhanced e-commerce tracking and custom events for maximum insight.
+            </p>
+
+            <div class="code-showcase">
+                <div class="code-header">
+                    <div class="code-tabs">
+                        <div class="code-tab"></div>
+                        <div class="code-tab"></div>
+                        <div class="code-tab"></div>
+                    </div>
+                    <div class="code-title">🎯 Enhanced GA4 Configuration</div>
+                    <button class="copy-button" onclick="copyToClipboard('ga4-code')">Copy Code</button>
+                </div>
+                <div class="code-content" id="ga4-code">
+<span class="comment"><!-- Google Analytics 4 - Enhanced Setup --></span>
+<span class="keyword">&lt;script</span> <span class="variable">async</span> <span class="variable">src</span>=<span class="string">"https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+<span class="keyword">&lt;script&gt;</span>
+  <span class="function">window.dataLayer</span> = <span class="function">window.dataLayer</span> || [];
+  <span class="keyword">function</span> <span class="function">gtag</span>() { <span class="function">dataLayer.push</span>(<span class="variable">arguments</span>); }
+
+  <span class="comment">// Initialize GA4 with enhanced settings</span>
+  <span class="function">gtag</span>(<span class="string">'js'</span>, <span class="keyword">new</span> <span class="function">Date</span>());
+  <span class="function">gtag</span>(<span class="string">'config'</span>, <span class="string">'GA_MEASUREMENT_ID'</span>, {
+    <span class="variable">enhanced_ecommerce</span>: <span class="keyword">true</span>,
+    <span class="variable">send_page_view</span>: <span class="keyword">false</span>,
+    <span class="variable">custom_map</span>: {
+      <span class="string">'custom_parameter_1'</span>: <span class="string">'user_type'</span>,
+      <span class="string">'custom_parameter_2'</span>: <span class="string">'subscription_tier'</span>
+    }
+  });
+
+  <span class="comment">// Enhanced Page View with custom dimensions</span>
+  <span class="function">gtag</span>(<span class="string">'event'</span>, <span class="string">'page_view'</span>, {
+    <span class="variable">page_title</span>: <span class="variable">document.title</span>,
+    <span class="variable">page_location</span>: <span class="variable">window.location.href</span>,
+    <span class="variable">custom_parameter_1</span>: <span class="function">getUserType</span>(),
+    <span class="variable">custom_parameter_2</span>: <span class="function">getSubscriptionTier</span>()
+  });
+
+  <span class="comment">// Advanced E-commerce Purchase Tracking</span>
+  <span class="keyword">function</span> <span class="function">trackPurchase</span>(<span class="variable">transactionData</span>) {
+    <span class="function">gtag</span>(<span class="string">'event'</span>, <span class="string">'purchase'</span>, {
+      <span class="variable">transaction_id</span>: <span class="variable">transactionData.id</span>,
+      <span class="variable">value</span>: <span class="function">parseFloat</span>(<span class="variable">transactionData.total</span>),
+      <span class="variable">currency</span>: <span class="string">'USD'</span>,
+      <span class="variable">tax</span>: <span class="function">parseFloat</span>(<span class="variable">transactionData.tax</span>),
+      <span class="variable">shipping</span>: <span class="function">parseFloat</span>(<span class="variable">transactionData.shipping</span>),
+      <span class="variable">items</span>: <span class="variable">transactionData.items</span>.<span class="function">map</span>(<span class="variable">item</span> => ({
+        <span class="variable">item_id</span>: <span class="variable">item.id</span>,
+        <span class="variable">item_name</span>: <span class="variable">item.name</span>,
+        <span class="variable">category</span>: <span class="variable">item.category</span>,
+        <span class="variable">quantity</span>: <span class="variable">item.quantity</span>,
+        <span class="variable">price</span>: <span class="function">parseFloat</span>(<span class="variable">item.price</span>)
+      }))
+    });
+  }
+
+  <span class="comment">// Smart Event Tracking with auto-retry</span>
+  <span class="keyword">function</span> <span class="function">trackEvent</span>(<span class="variable">eventName</span>, <span class="variable">parameters</span>, <span class="variable">retries</span> = <span class="number">3</span>) {
+    <span class="keyword">try</span> {
+      <span class="function">gtag</span>(<span class="string">'event'</span>, <span class="variable">eventName</span>, <span class="variable">parameters</span>);
+    } <span class="keyword">catch</span> (<span class="variable">error</span>) {
+      <span class="keyword">if</span> (<span class="variable">retries</span> > <span class="number">0</span>) {
+        <span class="function">setTimeout</span>(() => <span class="function">trackEvent</span>(<span class="variable">eventName</span>, <span class="variable">parameters</span>, <span class="variable">retries</span> - <span class="number">1</span>), <span class="number">1000</span>);
+      }
+    }
+  }
+<span class="keyword">&lt;/script&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Facebook Pixel Section -->
+        <div class="content-card">
+            <div class="section-header">
+                <div class="section-icon">📱</div>
+                <h2 class="section-title">Facebook Pixel + Conversion API</h2>
+            </div>
+
+            <div class="code-showcase">
+                <div class="code-header">
+                    <div class="code-tabs">
+                        <div class="code-tab"></div>
+                        <div class="code-tab"></div>
+                        <div class="code-tab"></div>
+                    </div>
+                    <div class="code-title">🎯 Advanced Facebook Tracking</div>
+                    <button class="copy-button" onclick="copyToClipboard('facebook-code')">Copy Code</button>
+                </div>
+                <div class="code-content" id="facebook-code">
+<span class="comment">// Facebook Pixel with Conversion API Integration</span>
+<span class="keyword">class</span> <span class="function">FacebookTracker</span> {
+  <span class="keyword">constructor</span>(<span class="variable">pixelId</span>) {
+    <span class="keyword">this</span>.<span class="variable">pixelId</span> = <span class="variable">pixelId</span>;
+    <span class="keyword">this</span>.<span class="function">init</span>();
+  }
+
+  <span class="function">init</span>() {
+    <span class="comment">// Load Facebook Pixel</span>
+    !<span class="keyword">function</span>(<span class="variable">f</span>,<span class="variable">b</span>,<span class="variable">e</span>,<span class="variable">v</span>,<span class="variable">n</span>,<span class="variable">t</span>,<span class="variable">s</span>) {
+      <span class="keyword">if</span>(<span class="variable">f.fbq</span>)<span class="keyword">return</span>;<span class="variable">n</span>=<span class="variable">f.fbq</span>=<span class="keyword">function</span>(){
+        <span class="variable">n.callMethod</span> ? <span class="variable">n.callMethod.apply</span>(<span class="variable">n</span>,<span class="variable">arguments</span>) : <span class="variable">n.queue.push</span>(<span class="variable">arguments</span>)
+      };
+      <span class="keyword">if</span>(!<span class="variable">f._fbq</span>)<span class="variable">f._fbq</span>=<span class="variable">n</span>;<span class="variable">n.push</span>=<span class="variable">n</span>;<span class="variable">n.loaded</span>=!<span class="number">0</span>;<span class="variable">n.version</span>=
